@@ -33,6 +33,7 @@ defmodule AHT20.MixProject do
   defp deps do
     [
       {:circuits_i2c, "~> 0.1"},
+      {:i2c_server, "~> 0.2"},
       {:mox, "~> 1.0.0", only: :test},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},

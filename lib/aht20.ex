@@ -18,11 +18,6 @@ defmodule AHT20 do
           | AHT20.Sensor.config()
 
   @doc """
-  Detect devices on I2C buses.
-  """
-  def detect_device(), do: Circuits.I2C.detect_devices()
-
-  @doc """
   Start a new GenServer for interacting with a AHT20.
   Normally, you'll want to pass the `:bus_name` option to specify the I2C
   bus going to the AHT20.
@@ -33,16 +28,16 @@ defmodule AHT20 do
     GenServer.start_link(__MODULE__, init_arg, options)
   end
 
-  def measure(server \\ __MODULE__), do: GenServer.call(server, :measure)
+  def measure(server), do: GenServer.call(server, :measure)
 
   @deprecated "Use AHT20.measure/1 instead"
-  def read(server \\ __MODULE__), do: measure(server)
+  def read(server), do: measure(server)
 
   @deprecated "Use AHT20.measure/1 instead"
-  def read_data(server \\ __MODULE__), do: measure(server)
+  def read_data(server), do: measure(server)
 
   @deprecated "Will be removed in next release"
-  def read_state(server \\ __MODULE__), do: GenServer.call(server, :read_state)
+  def read_state(server), do: GenServer.call(server, :read_state)
 
   @impl true
   def init(config) do
