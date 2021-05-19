@@ -19,8 +19,6 @@ defmodule AHT20 do
 
   @doc """
   Start a new GenServer for interacting with a AHT20.
-  Normally, you'll want to pass the `:bus_name` option to specify the I2C
-  bus going to the AHT20.
   """
   @spec start_link(options()) :: GenServer.on_start()
   def start_link(init_arg) do
