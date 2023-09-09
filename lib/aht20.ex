@@ -34,10 +34,11 @@ defmodule AHT20 do
   @impl GenServer
   def init(config) do
     bus_name = config[:bus_name] || @default_bus_name
+    bus_addr = config[:bus_address] || @aht20_address
 
-    Logger.info("[AHT20] Starting on bus #{bus_name} at address #{inspect(@aht20_address, base: :hex)}")
+    Logger.info("[AHT20] Starting on bus #{bus_name} at address #{inspect(bus_addr, base: :hex)}")
 
-    case transport_mod().open(bus_name: bus_name, bus_address: @aht20_address) do
+    case transport_mod().open(bus_name: bus_name, bus_address: bus_addr) do
       {:ok, transport} ->
         {:ok, %{transport: transport}, {:continue, :init_sensor}}
 
